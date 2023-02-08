@@ -53,16 +53,16 @@ parser.add_argument('-t', help = 'relative path to html output directory')
 # the content has moved to the community website,
 # but we still build them to avoid broken links
 # format: (filename_root, display_name, source relative to local_lean_root, community_site_url)
-extra_doc_files = [('overview', 'mathlib overview', 'docs/mathlib-overview.md', 'mathlib-overview'),
-                   ('tactic_writing', 'tactic writing', 'docs/extras/tactic_writing.md', 'extras/tactic_writing'),
-                   ('calc', 'calc mode', 'docs/extras/calc.md', 'extras/calc'),
-                   ('conv', 'conv mode', 'docs/extras/conv.md', 'extras/conv'),
-                   ('simp', 'simplification', 'docs/extras/simp.md', 'extras/simp'),
-                   ('well_founded_recursion', 'well founded recursion', 'docs/extras/well_founded_recursion.md','extras/well_founded_recursion'),
-                   ('style', 'style guide', 'docs/contribute/style.md','contribute/style'),
-                   ('doc_style', 'documentation style guide', 'docs/contribute/doc.md','contribute/doc'),
-                   ('naming', 'naming conventions', 'docs/contribute/naming.md','contribute/naming')]
-env.globals['extra_doc_files'] = extra_doc_files
+#extra_doc_files = [('overview', 'mathlib overview', 'docs/mathlib-overview.md', 'mathlib-overview'),
+                   #('tactic_writing', 'tactic writing', 'docs/extras/tactic_writing.md', 'extras/tactic_writing'),
+                   #('calc', 'calc mode', 'docs/extras/calc.md', 'extras/calc'),
+                   #('conv', 'conv mode', 'docs/extras/conv.md', 'extras/conv'),
+                   #('simp', 'simplification', 'docs/extras/simp.md', 'extras/simp'),
+                   #('well_founded_recursion', 'well founded recursion', 'docs/extras/well_founded_recursion.md','extras/well_founded_recursion'),
+                   #('style', 'style guide', 'docs/contribute/style.md','contribute/style'),
+                   #('doc_style', 'documentation style guide', 'docs/contribute/doc.md','contribute/doc'),
+                   #('naming', 'naming conventions', 'docs/contribute/naming.md','contribute/naming')]
+#env.globals['extra_doc_files'] = extra_doc_files
 
 # test doc files to include in generation
 # will not be linked to from the doc pages
@@ -613,10 +613,10 @@ def write_html_files(partition, loc_map, notes, mod_docs, instances, instances_f
         decl_names = sorted(d['name'] for d in decls),
       ))
 
-  current_project = 'extra'
-  for (filename, displayname, source, _) in extra_doc_files:
-    current_filename = filename + '.html'
-    write_pure_md_file(local_lean_root + source, filename + '.html', displayname)
+  #current_project = 'extra'
+  #for (filename, displayname, source, _) in extra_doc_files:
+  #  current_filename = filename + '.html'
+  #  write_pure_md_file(local_lean_root + source, filename + '.html', displayname)
 
   current_project = 'test'
   for (filename, displayname, source) in test_doc_files:
@@ -650,8 +650,8 @@ def write_site_map(partition):
       out.write(site_root + filename.url + '\n')
     for n in ['index', 'tactics', 'commands', 'hole_commands', 'notes', 'references']:
       out.write(site_root + n + '.html\n')
-    for (filename, _, _, _) in extra_doc_files:
-      out.write(site_root + filename + '.html\n')
+    #for (filename, _, _, _) in extra_doc_files:
+    #  out.write(site_root + filename + '.html\n')
 
 def write_docs_redirect(decl_name, decl_loc, file_map):
   decl = next((d for d in file_map[decl_loc] if d['name'] == decl_name), None)
@@ -717,7 +717,8 @@ def copy_css_and_js(path, use_symlinks):
   write_add_commit_js(url_rewrites)
 
 def copy_yaml_bib_files(path):
-  for fn in ['100.yaml', 'undergrad.yaml', 'overview.yaml', 'references.bib']:
+  #for fn in ['100.yaml', 'undergrad.yaml', 'overview.yaml', 'references.bib']:
+  for fn in ['references.bib']:  
     shutil.copyfile(f'{local_lean_root}docs/{fn}', path+fn)
 
 def copy_static_files(path):

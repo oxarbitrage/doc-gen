@@ -20,7 +20,7 @@ while [ "$1" != "" ]; do
     shift
 done
 if [ -z "$source" ]; then
-  source=_target/deps/mathlib/
+  source=_target/deps/salsa20/
 fi
 
 args=()
@@ -33,7 +33,7 @@ if [ "$link" -eq "1" ]; then
 fi
 
 bash "$source"scripts/mk_all.sh
-lean --run src/entrypoint.lean >export.json
+lean --quiet --test-suite --run src/entrypoint.lean >export.json
 bash "$source"scripts/rm_all.sh
 
 python3 print_docs.py -r "$source" -w "$site_root" "${args[@]}"
