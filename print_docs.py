@@ -233,8 +233,8 @@ library_link_roots = {
 
 # TODO: allow extending this for third-party projects
 canonical_roots = {
-  'core': 'https://leanprover-community.github.io/mathlib_docs',
-  'mathlib': 'https://leanprover-community.github.io/mathlib_docs',
+  'core': 'https://oxarbitrage.github.io/salsa20-docs',
+  'mathlib': 'https://oxarbitrage.github.io/salsa20-docs',
 }
 
 def get_canonical_url(path, project='mathlib'):
