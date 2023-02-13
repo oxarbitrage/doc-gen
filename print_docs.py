@@ -142,6 +142,9 @@ with open('leanpkg.toml') as f:
 ml_data = parsed_toml['dependencies']['mathlib']
 mathlib_commit = ml_data['rev']
 mathlib_github_root = ml_data['git'].strip('/')
+salsa20_data = parsed_toml['dependencies']['salsa20']
+salsa20_commit = salsa20_data['rev']
+salsa20_github_root = salsa20_data['git'].strip('/')
 
 # contains an array of [prefix, replacement] strings to be rewritten by nav.js
 url_rewrites = []
@@ -219,6 +222,8 @@ env.globals['mathlib_github_root'] = mathlib_github_root
 env.globals['mathlib_commit'] = mathlib_commit
 env.globals['lean_commit'] = lean_commit
 env.globals['docgen_commit'] = docgen_commit
+env.globals['salsa20_commit'] = salsa20_commit
+env.globals['salsa20_github_root'] = salsa20_github_root
 
 markdown_renderer = CustomHTMLRenderer()
 

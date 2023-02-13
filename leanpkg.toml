@@ -6,3 +6,4 @@ path = "src"
 
 [dependencies]
 mathlib = {git = "https://github.com/leanprover-community/mathlib", rev = "0bd4faeefa19bd012a18e5fe23bf46d3def25043"}
+salsa20 = {git = "https://github.com/oxarbitrage/salsa20", rev = "ea1f294e77aa7ef998b6997e1b144a3605f78332"}
